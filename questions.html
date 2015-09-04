@@ -3,23 +3,44 @@
 <div class="col-md-8 col-md-offset-2">
 <div class="panel panel-default">
 <div style="padding-top:30px;" class="panel-body">
-<form class="form-horizontal" role="form" name="questionForm" ng-submit="addUserQuestions()" novalidate>
+<!-- <form class="form-horizontal" role="form" name="questionForm" ng-submit="addUserQuestions()" novalidate>
 	<div ng-repeat="ques in qnums">					
 		<div class="form-group">
 			<label class="col-sm-2 control-label">Question {{$index+1}}</label>
 			<div class="col-sm-10">
-			<select class="form-control" ng-model="setQuestion[ques].question" ng-options="question as question.name for question in questions | filter:question.selected='false'"></select>
+			<select class="form-control" ng-model="setQuestion[ques].question" ng-options="question as question.name for question in questions" ng-change="updateSelected()" ng-disabled="question.selected" required></select>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-sm-2 control-label">Answer</label>
 			<div class="col-sm-10">
-				<input class="form-control" type="text" ng-model="setQuestion[ques].answer"></input>
+				<input class="form-control" type="text" ng-model="setQuestion[ques].answer" required></input>
 			</div>
 		</div>				
 	</div>
 	<div id="form-button" class="form-group">
-		<input type="submit" value="Submit" class="btn btn-default"></input>
+		<input type="submit" value="Submit" class="btn btn-primary" ng-disabled="questionForm.$invalid"></input>
+	</div>				
+</form>	 -->
+<form class="form-horizontal" role="form" name="questionForm" ng-submit="addUserQuestions()" novalidate>
+	<div ng-repeat="i in [1,2,3]">					
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Question {{i}}</label>
+			<div class="col-sm-10">
+			<select class="form-control" ng-change="updateSelected(setQuestion[$index].question)" ng-model="setQuestion[$index].question" required>
+				<option ng-repeat="question in questions" value="question" ng-disabled="question.selected">{{question.name}}</option>
+			</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Answer</label>
+			<div class="col-sm-10">
+				<input class="form-control" type="text" ng-model="setQuestion[$index].answer" required></input>
+			</div>
+		</div>				
+	</div>
+	<div id="form-button" class="form-group">
+		<input type="submit" value="Submit" class="btn btn-primary" ng-disabled="questionForm.$invalid"></input>
 	</div>				
 </form>	
 </div>
