@@ -1,0 +1,38 @@
+<html ng-app="passApp">
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>    
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+		<script src="js/app.js"></script>
+		<style type="text/css">
+			#main {
+				margin: 20;
+			}
+		</style>
+	</head>
+	<body>
+		<h3>Set security questions</h3>
+		<div>
+		<form class="form-horizontal" role="form" name="questionForm" ng-submit="addUserQuestion()" novalidate>
+			<div ng-repeat="ques in qnums">					
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Question {{$index+1}}</label>
+					<div class="col-sm-10">
+					<select class="form-control" ng-model="setQuestion[ques].question" ng-options="question as question.name for question in questions | filter:question.selected='false'"></select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Answer</label>
+					<div class="col-sm-10">
+						<input class="form-control" type="text" ng-model="setQuestion[ques].answer"></input>
+					</div>
+				</div>				
+			</div>
+			<div class="form-group">
+				<input type="submit" value="Submit" class="btn btn-default"></input>
+			</div>				
+		</form>	
+		</div>
+	</body>
+</html>

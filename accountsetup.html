@@ -1,0 +1,24 @@
+<html ng-app="acapp">
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>    
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+		<script src="js/account.js"></script>
+		<style type="text/css">
+			#form-button {
+				text-align: center;
+			}			
+		</style>
+	</head>
+	<body>
+		<nav class="nav navbar-default">
+			<div class="navbar-header">
+				<p class="navbar-brand">Account Setup</p>
+			</div>
+		</nav>
+		<div ng-controller="loginController">
+			<div ng-view></div>
+		</div>
+	</body>
+</html>
