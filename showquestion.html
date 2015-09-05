@@ -8,13 +8,13 @@
 		<div class="row">
 			<form role="form" name="securityAnswerForm" ng-submit="checkAnswer()" novalidate>
 				<div class="form-group">
-					<label class="control-label col-sm-3">{{question}}</label>
-					<div>
-						<input class="form-control" type="text" ng-model="answer"></input>
+					<label id="label-in-panel" class="control-label">{{question}}</label>
+					<div class="col-md-12">
+						<input class="form-control" type="text" ng-model="answer" required></input>
 					</div>
 				</div>
 				<div id="form-button" class="form-group">
-					<input type="submit" value="Next" class="btn btn-primary"></input>
+					<input type="submit" value="Next" class="btn btn-primary" ng-disabled="securityAnswerForm.$invalid"></input>
 				</div>
 			</form>
 		</div>

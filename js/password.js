@@ -1,4 +1,4 @@
-var app = angular.module("pwdapp",['ngRoute']);
+var app = angular.module("pwdapp",['ngRoute', 'ngMessages']);
 
 app.config(['$routeProvider', function($routeProvider) {
 	$routeProvider
@@ -10,6 +10,13 @@ app.config(['$routeProvider', function($routeProvider) {
 		templateUrl : '../showquestion.html',
 		controller : "answerController"
 	})
+	.when('/thankyou', {
+		templateUrl : '../thankyou.html'
+	})
+	.when('/passwordreset', {
+		templateUrl : '../passwordreset.html',
+		controller: 'passwordResetController'
+	}) 
 	.otherwise({
 		redirectTo : '/getuser',
 		controller : 'userController'
@@ -32,8 +39,69 @@ app.controller('answerController', ['$scope', '$location', function($scope, $loc
 	$scope.totalQuestions = 3;
 	$scope.question = "this is question 1 here"; // http get this, TODO
 	$scope.answer = "";
-	
+	$scope.checkAnswer = function() {
+		answer = $scope.answer;
+		question = $scope.question;
+		// success , goto next question
+		if($scope.questionNumber < 3) {
+			$scope.questionNumber++;
+			$scope.question = "this is question " + $scope.questionNumber + " here";
+			$scope.answer = "";
+		} else {
+			$location.path("/passwordreset")
+		}
+	};
 }]);
+
+app.controller("passwordResetController", ['$scope', '$location', function($scope, $location) {
+	
+	$scope.passwordReset = function() {
+		var pwd = $scope.password;
+		console.log(pwd);
+		// http call to send password
+		// if success
+		// show thank you page
+		// else TODO
+		$location.path('/thankyou');
+
+	};
+}]);
+
+/**
+* value in ngModel is compared with value in compareTo
+*/
+app.directive('compareTo', function() {
+	return {
+		require : "ngModel",
+		scope: {
+			otherValue : "=compareTo"
+		},
+		link : function(scope, element, attrbs, ngModel) {
+			ngModel.$validators.compareTo = function(modelValue) {
+				return modelValue == scope.otherValue;
+			};
+			scope.$watch("otherValue", function() {
+				ngModel.$validate();
+			});
+		}
+	};
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
