@@ -3,18 +3,18 @@ var app = angular.module("pwdapp",['ngRoute', 'ngMessages']);
 app.config(['$routeProvider', function($routeProvider) {
 	$routeProvider
 	.when('/getuser', {
-		templateUrl : '../getuser.html',
+		templateUrl : '../html/getuser.html',
 		controller: 'userController'
 	})
 	.when('/showquestion', {
-		templateUrl : '../showquestion.html',
+		templateUrl : '../html/showquestion.html',
 		controller : "answerController"
 	})
 	.when('/thankyou', {
-		templateUrl : '../thankyou.html'
+		templateUrl : '../html/thankyou.html'
 	})
 	.when('/passwordreset', {
-		templateUrl : '../passwordreset.html',
+		templateUrl : '../html/passwordreset.html',
 		controller: 'passwordResetController'
 	}) 
 	.otherwise({

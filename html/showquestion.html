@@ -1,0 +1,24 @@
+<div style="padding-top:30px;" class="container">
+		<div class="col-md-6 col-md-offset-3">
+		<div class="panel panel-default">
+		<div class="panel-heading">
+			Question {{questionNumber}} of {{totalQuestions}}
+		</div>
+		<div style="padding-top:30px;" class="panel-body">
+		<div class="row">
+			<form role="form" name="securityAnswerForm" ng-submit="checkAnswer()" novalidate>
+				<div class="form-group">
+					<label id="label-in-panel" class="control-label">{{question}}</label>
+					<div class="col-md-12">
+						<input class="form-control" type="text" ng-model="answer" required></input>
+					</div>
+				</div>
+				<div id="form-button" class="form-group">
+					<input type="submit" value="Next" class="btn btn-primary" ng-disabled="securityAnswerForm.$invalid"></input>
+				</div>
+			</form>
+		</div>
+		</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,21 @@
+<div style="padding-top:30px;" class="container">
+	<div class="col-md-6 col-md-offset-3">
+		<div class="panel panel-default">
+			<div style="padding-top:30px;" class="panel-body">
+				<div class="row">
+					<form name="userform" class="form-horizontal" role="form" ng-submit="checkUser()" novalidate>
+						<div class="form-group">
+							<label class="control-label col-sm-3">Username</label>
+							<div class="col-sm-8">
+								<input class="form-control" type="text" ng-model="username" required ng-minlength=5></input>
+							</div>
+						</div>
+						<div id="form-button" class="form-group">
+							<input type="submit" class="btn btn-primary" ng-disabled="userform.$invalid"></input>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
